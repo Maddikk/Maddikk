@@ -4,7 +4,8 @@ import os
 
 
 #Устанавливаем токен для подключения бота к API telegram из файла
-TOKEN = open("tkn.tx",'r').read()
+TOKEN = open("tkn.tx",'r').read().strip()
+
 
 # Запускаем ботка с токеном и инициализируем диспетчера
 bot = Bot(TOKEN)
