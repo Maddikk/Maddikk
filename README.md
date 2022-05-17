@@ -1,1 +1,1 @@
-Here is my bot fot telegeram, just for fun.
+Here is my bot for telegeram, just for fun.
