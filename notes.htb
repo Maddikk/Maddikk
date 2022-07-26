@@ -1,1 +1,2 @@
-python3 -c 'import pty;pty.spawn("/bin/bash")'  - shell via python
+python3 -c 'import pty;pty.spawn("/bin/bash")'  # shell via python
+zip2john \ rar2john                             # crack archives  via johntheripepr
