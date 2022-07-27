@@ -1,4 +1,5 @@
-dig axfr <hostname> @<hostip>                         # DNS zone trans
+dig axfr <hostname> @<hostip>                         # DNS zone transfer
+curl <hostname> -I                                    # Get response header
 
 python3 -m http.server 8000                           # strat simple python3 server on 8000 port
 python3 -c 'import pty;pty.spawn("/bin/bash")'        # shell via python
