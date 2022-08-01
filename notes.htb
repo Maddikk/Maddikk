@@ -1,3 +1,5 @@
+https://fornex.com/my/vps/
+
 ####################### sources ###################
 revshells.com                                                                     # shells generator
 https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys  # interactive bash fully TTY
@@ -6,6 +8,8 @@ https://gtfobins.github.io/                                                     
 https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection    #SSTi inj
 https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection 
 https://medium.com/@nyomanpradipta120/ssti-in-flask-jinja2-20b068fdaeee           # SSTI in FLASK
+https://wiki.owasp.org/index.php/OWASP_favicon_database                           # Databse of framework by favicon  OWASP DB
+https://github.com/danielmiessler/SecLists                                        # Wordlists 
 
 
 ######################## Enumerate host ##############################################
@@ -16,7 +20,14 @@ nmap -p 1-500 -sU -T4 targetip -Pn                                              
 smbmap -H 10.10.11.152 -u "" -p ""                                                 # enumerate SMB
 smbclient -L //10.10.11.152/ -N                                                    # enumerate SMB 
 dig axfr <hostname> @<dns/hostip>                                                  # DNS zone transfer
+ffuf -w /wordlist.txt -u http://10.10.90.15/FUZZ                                   # Dir fuzzing  
+dirb http://10.10.90.15/ /wordlist.txt                                             # Dir fuzzing  
+gobuster dir --url http://10.10.90.15/ -w /wordlist.txt                            # Dir fuzzing
+
+
 curl <hostname> -I                                                                 # Get response header
+curl <hostname> -v                                                                 # Verbose mode with header
+curl http://site.com/images/favico.ico | md5sum                                    # Get hash of the favicon site and when chek it on the OWASP DB (see 1 note)
 
 
 ######################## Enumerate privileges #######################################
