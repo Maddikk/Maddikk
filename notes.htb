@@ -1,7 +1,7 @@
 https://fornex.com/my/vps/
 
 ####################### sources ###################
-                                                                    # shells generator
+https://www.revshells.com/                                                        # shells generator
 https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys  # interactive bash fully TTY
 https://gtfobins.github.io/                                                       # bypass local security restrictions in Linux
 
@@ -15,6 +15,8 @@ https://crackstation.net/                                                       
 https://crt.sh                                                                    # Discover subdomains belonging to a domain by cert
 https://transparencyreport.google.com/https/certificates                          # Discover subdomains belonging to a domain by cert
 google: "-site:www.domain.com site:*.domain.com"                                  # Google dorks
+
+https://requestbin.com/                                                           # For request 
 
 
 ######################## Enumerate host ##############################################
