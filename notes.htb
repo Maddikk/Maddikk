@@ -4,7 +4,7 @@ https://fornex.com/my/vps/
 https://www.revshells.com/                                                        # shells generator
 https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys  # interactive bash fully TTY
 https://gtfobins.github.io/                                                       # bypass local security restrictions in Linux
-
+https://github.com/payloadbox/command-injection-payload-list                      # Cheatsheet for command injection
 https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection    #SSTi inj
 https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection 
 https://medium.com/@nyomanpradipta120/ssti-in-flask-jinja2-20b068fdaeee           # SSTI in FLASK
@@ -17,7 +17,7 @@ https://transparencyreport.google.com/https/certificates                        
 google: "-site:www.domain.com site:*.domain.com"                                  # Google dorks
 
 https://requestbin.com/                                                           # For request 
-https://xsshunter.com/                                                            # For blind XSS
+https://xsshunter.com/                                                            # For blind XSS tool
 
 
 ######################## Enumerate host ##############################################
@@ -86,6 +86,13 @@ pspy64                                                                          
 
 nc -lvnp 9999                                                                      # strat simple nc server on 9999 port
 python3 -m http.server 8000                                                        # strat simple python3 server on 8000 port
+
+########################          RCE          #####################################
+
+Linux command: whoami, ls, ping, sleep, nc                                         # Commands for test RCE
+Windows commnad: whoami, dir, ping, timeout 
+
+
 
 ####################################################################################
 
