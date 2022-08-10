@@ -6,6 +6,7 @@ https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20an
 https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys  # interactive bash fully TTY
 https://gtfobins.github.io/                                                       # bypass local security restrictions in Linux
 https://github.com/payloadbox/command-injection-payload-list                      # Cheatsheet for command injection
+http://www.xss-payloads.com/payloads/scripts/                                     # Cheatsheet for XXS
 https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection    # SSTi inj
 https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection 
 https://medium.com/@nyomanpradipta120/ssti-in-flask-jinja2-20b068fdaeee           # SSTI in FLASK
