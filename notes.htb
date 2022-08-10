@@ -1,6 +1,8 @@
 https://fornex.com/my/vps/
 
 ####################### sources ###################
+in kali > searchsploit                                                            # search exploit
+https://www.exploit-db.com/                                                       # exploit DB
 https://www.revshells.com/                                                        # shells generator
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md  # shell cheat sheet
 https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys  # interactive bash fully TTY
