@@ -24,6 +24,7 @@ google: "-site:www.domain.com site:*.domain.com"                                
 
 https://requestbin.com/                                                           # For request 
 https://xsshunter.com/                                                            # For blind XSS tool
+https://vim.rtorr.com/                                                            # VIM cheat sheet
 
 
 ######################## Enumerate host ##############################################
