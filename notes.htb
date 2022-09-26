@@ -34,6 +34,7 @@ nmap -p- -T4 targetip -Pn                                                       
 nmap -p 1-500 -sU -T4 targetip -Pn                                                 # enumerate  UDP ports
 smbmap -H 10.10.11.152 -u "" -p ""                                                 # enumerate SMB
 smbclient -L //10.10.11.152/ -N                                                    # enumerate SMB 
+enum4linux [options] ip                                                            # enumerate SMB
 dnsrecon -t brt -d <site.name>                                                     # DNS Bruteforce enumeration domain
 ./sublist3r.py -d acmeitsupport.thm                                                # DNS enumeration domain
 dig axfr <hostname> @<dns/hostip>                                                  # DNS zone transfer
