@@ -49,6 +49,9 @@ curl <hostname> -I                                                              
 curl <hostname> -v                                                                 # Verbose mode with header
 curl http://site.com/images/favico.ico | md5sum                                    # Get hash of the favicon site and when chek it on the OWASP DB (see 1 note)
 
+/usr/sbin/showmount -e <IP>                                                        # Enumerate remote IP share 
+mount -t nfs <IP>:<share> <local/tmp/mount/> -nolock                               # Mount remote share from IP to local dir local/tmp/mount          
+
 ########################     Bruteforce       ########################################
 
 hydra -t 4 -l <user> -P /usr/share/wordlists/rockyou.txt -vV ip protocl_ftp        # Bruteforce password for any protocol (FTP, SSH, RDP ...)
