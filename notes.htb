@@ -2,6 +2,8 @@ https://fornex.com/my/vps/
 
 ####################### sources ###################
 in kali > searchsploit                                                            # search exploit
+sudo apt install seclists                                                         # install in Kali\Parrot wordlists
+
 https://www.exploit-db.com/                                                       # exploit DB
 https://www.revshells.com/                                                        # shells generator
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md  # shell cheat sheet
@@ -50,7 +52,11 @@ curl <hostname> -v                                                              
 curl http://site.com/images/favico.ico | md5sum                                    # Get hash of the favicon site and when chek it on the OWASP DB (see 1 note)
 
 /usr/sbin/showmount -e <IP>                                                        # Enumerate remote IP share 
-mount -t nfs <IP>:<share> <local/tmp/mount/> -nolock                               # Mount remote share from IP to local dir local/tmp/mount          
+mount -t nfs <IP>:<share> <local/tmp/mount/> -nolock                               # Mount remote share from IP to local dir local/tmp/mount     
+
+msfconsole --> smtp_version                                                        # Check smtp version
+msfconsole --> smtp_enum                                                           # Enumerate smtp 
+
 
 ########################     Bruteforce       ########################################
 
