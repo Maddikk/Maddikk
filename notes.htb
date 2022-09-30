@@ -56,6 +56,10 @@ mount -t nfs <IP>:<share> <local/tmp/mount/> -nolock                            
 
 msfconsole --> smtp_version                                                        # Check smtp version
 msfconsole --> smtp_enum                                                           # Enumerate smtp 
+msfconsole --> mysql_sql                                                           # Enumerate mysql 
+msfconsole --> mysql_schemadump                                                    # Enumerate mysql
+msfconsole --> mysql_hashdump                                                      # Enumerate mysql
+
 
 
 ########################     Bruteforce       ########################################
