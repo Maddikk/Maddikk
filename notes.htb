@@ -31,7 +31,19 @@ https://vim.rtorr.com/                                                          
 https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993                  # PowerView-3.0 domain enum
 
 
-######################## Enumerate host ##############################################
+######################## Passive Enumerate host ######################################
+
+
+whois <domain name>                                                                # to query WHOIS servers
+nslookup <ip>\<domain name>                                                        # to query DNS database records
+dig <ip>                                                                           # to query DNS database records
+
+DNSDumpster
+Shodan.io
+
+
+
+######################## Active Enumerate host ##############################################
 
 nmap -sC -sV -A targetip -Pn                                                       # enumerate 
 nmap -p- -T4 targetip -Pn                                                          # enumerate  other TCP ports
