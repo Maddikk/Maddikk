@@ -45,6 +45,23 @@ Shodan.io
 
 ######################## Active Enumerate host ##############################################
 
+nmap -PR -sn <IP>/24                                                               # ARP enumerate LOCAL subnet /24  (-sn - host discovery only)
+arp-scan -I eth0 -l                                                                # ARP enumerate LOCAL subnet /24
+
+nmap -PE -sn <IP>/24                                                               # ICMP enumerate subnet /24 by using echo request Type 8 and echo reply Type 0
+nmap -PP -sn <IP>/24                                                               # ICMP enumerate subnet /24 by using echo timestamp Type 13 and reply Type 14
+nmap -PM -sn <IP>/24                                                               # ICMP enumerate subnet /24 by using address mask queries Type 17 and reply Type 18
+
+nmap -PS -sn <IP>/24                                                               # TCP SYN enumerate subnet /24  (use default PORT to established communication, can change it -PA0-1024)
+nmap -PA -sn <IP>/24                                                               # TCP ACK enumerate subnet /24 
+
+nmap -PU -sn <IP>/24                                                               # UDP enumerate subnet /24
+
+nmap -R <IP>/24                                                                    # Use reverse DNS for enumerate offline hosts
+
+masscan <IP>/24 -p443  or -p80,443 or -p22-25 or ‐‐top-ports 100                   # More aggressive and fast than nmap scan
+
+
 nmap -sC -sV -A targetip -Pn                                                       # enumerate 
 nmap -p- -T4 targetip -Pn                                                          # enumerate  other TCP ports
 nmap -p 1-500 -sU -T4 targetip -Pn                                                 # enumerate  UDP ports
