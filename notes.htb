@@ -44,7 +44,7 @@ Shodan.io
 
 
 ######################## Active Enumerate host ##############################################
-
+************************  Host discovering **************************************************
 nmap -PR -sn <IP>/24                                                               # ARP enumerate LOCAL subnet /24  (-sn - host discovery only)
 arp-scan -I eth0 -l                                                                # ARP enumerate LOCAL subnet /24
 
@@ -59,8 +59,13 @@ nmap -PU -sn <IP>/24                                                            
 
 nmap -R <IP>/24                                                                    # Use reverse DNS for enumerate offline hosts
 
-masscan <IP>/24 -p443  or -p80,443 or -p22-25 or ‐‐top-ports 100                   # More aggressive and fast than nmap scan
+masscan <IP>/24 [-p443  or -p80,443 or -p22-25 or ‐‐top-ports 100]                 # More aggressive and fast than nmap scan
 
+************************** Ports discovering ************************************************
+nmap -sT <IP>                                                                      # TCP 3-way handshake port scan (for no privilege user)
+nmap -F <IP>                                                                       # Scan 100 most common used ports 
+nmap -sS <IP>                                                                      # Default TCP SYN scan (need privilege root or sudoer)
+nmap -sU <IP>                                                                      # Default UDP scan 
 
 nmap -sC -sV -A targetip -Pn                                                       # enumerate 
 nmap -p- -T4 targetip -Pn                                                          # enumerate  other TCP ports
