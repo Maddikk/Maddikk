@@ -59,6 +59,8 @@ nmap -PU -sn <IP>/24                                                            
 
 nmap -R <IP>/24                                                                    # Use reverse DNS for enumerate offline hosts
 
+nmap -O --traceroute -sS <IP>/24                                                   # -O OS detection / --traceroute router detection between scaner and <IP>
+
 masscan <IP>/24 [-p443  or -p80,443 or -p22-25 or ‐‐top-ports 100]                 # More aggressive and fast than nmap scan
 
 ************************** Ports discovering ************************************************
@@ -66,6 +68,12 @@ nmap -sT <IP>                                                                   
 nmap -F <IP>                                                                       # Scan 100 most common used ports 
 nmap -sS <IP>                                                                      # Default TCP SYN scan (need privilege root or sudoer)
 nmap -sU <IP>                                                                      # Default UDP scan 
+nmap -sV                                                                           # Service detection --version-light \ --version-all \ --version-intensity <0-9>
+
+************************** Nmap script Engine ************************************************
+nmap -sC -sS                                                                       # Using all default scripts
+nmap -sS --script "script-name"                                                    # Use special script by name or use mask "ftp*" 
+
 
 nmap -sC -sV -A targetip -Pn                                                       # enumerate 
 nmap -p- -T4 targetip -Pn                                                          # enumerate  other TCP ports
