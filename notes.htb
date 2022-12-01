@@ -271,5 +271,12 @@ pdfinfo <file.pdf>                                                              
 exiftool <file.pdf>                                                                 # Get meta info from images files
 
 
+############################### Metasploit#########################################
 
+msfconsloe
+searchxploite <xploite>
+use <xploite>
+show options
+show payloads
+info / info <module path>
 
