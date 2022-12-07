@@ -274,9 +274,27 @@ exiftool <file.pdf>                                                             
 ############################### Metasploit#########################################
 
 msfconsloe
-searchxploite <xploite>
+searchexploite <xploite>
 use <xploite>
 show options
 show payloads
 info / info <module path>
+exploit
+
+msf > auxiliary(scanner/discovery/udp_sweep) 
+msf > auxiliary(scanner/portscan/tcp)
+msf > auxiliary(scanner/smb/smb_version)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Use DB for Metaspolit ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>systemctl start postgresql                                                           # Start DB
+>msfdb init                                                                           # DB init for MSF
+>msfconsole                                                                            
+>workspace -a <name database>  /  -d <name database>                                  # Add and Delete DB for MSF
+>workspace <name database>                                                            # Choose DB for MSF
+>db_nmap                                                                              # Save result in DB after nmap scan
+>hosts / services                                                                     # Show info about saves scans result
+>host -R                                                                              # set RHOSTS as hosts-list
+>services -S <name service>                                                           # Search specific service
+>CTRL+Z                                                                               # Move session or using module to background
+>sessions                                                                             # Show all active sessions
+>sessions -i <session number>                                                         # Move to session №
 
