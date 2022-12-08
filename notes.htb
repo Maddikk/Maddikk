@@ -112,10 +112,10 @@ hydra -t 4 -l <user> -P /usr/share/wordlists/rockyou.txt -vV ip protocl_ftp     
 
 #######################         XXE          #########################################
 
-<!DOCTYPE replace [<!ENTITY name "feast"> ]>
- <userInfo>
-  <firstName>falcon</firstName>
-  <lastName>&name;</lastName>
+<!DOCTYPE replace [<!ENTITY name "feast"> ]>                                       # 
+ <userInfo>                                                                        #
+  <firstName>falcon</firstName>                                                    #
+  <lastName>&name;</lastName>                                                      #
  </userInfo>
 
 
