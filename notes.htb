@@ -298,3 +298,8 @@ msf > auxiliary(scanner/smb/smb_version)
 >sessions                                                                             # Show all active sessions
 >sessions -i <session number>                                                         # Move to session №
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Msfvenom     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+>msfvenom -l payloads                                                                 # List all payloads
+>msfvenom -e php/base64 -f raw                                                        # -e <code> Encode payload and -f <format> output: raw, elf, exe, asp  
+
